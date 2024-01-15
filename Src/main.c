@@ -7,7 +7,7 @@
 #include "timer.h"
 #include "occurence.h"
 #include "huffman.h"
-
+#include <stdbool.h>
 
 
 int main(void)
@@ -19,7 +19,7 @@ int main(void)
 	printf("Bienvenue dans l'algorithme de compression\r\n");
 	printf("*******************************************\r\n\n");
 	uint32_t tabCaractere[256];
-	uint8_t texte[] = "bbbbiiioo";
+	uint8_t texte[] = "aaaeiii";
 
 
 	// Calcul des occurences
@@ -30,8 +30,16 @@ int main(void)
 	struct noeud* arbreHuffman[256];
 
 	// Création des feuilles de l'arbre
-	creerFeuille(arbreHuffman, tabCaractere);
+	creerFeuille(arbreHuffman, tabCaractere, true);
 
+    // Afficher les informations des 3 premières cases du tableau
+	printf("Avant le tri :\n");
+	afficherTabArbreHuffman(arbreHuffman, 3);
+
+	triArbre(arbreHuffman, 3);
+
+	printf("\nAprès le tri :\n");
+	afficherTabArbreHuffman(arbreHuffman, 3);
 
 	// Libérer la mémoire allouée pour les feuilles de l'arbre
 	for (int i = 0; i < 256; i++) {

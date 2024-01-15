@@ -5,6 +5,7 @@
 
 #include <stdint.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 // Structure pour représenter un nœud de l'arbre de Huffman
 struct noeud {
@@ -16,6 +17,8 @@ struct noeud {
 };
 
 // Fonction pour créer une feuille de l'arbre de Huffman
-void creerFeuille(struct noeud* arbre[256], uint32_t tab[256]);
+void creerFeuille(struct noeud* arbre[256], uint32_t tab[256],_Bool debug);
+void afficherTabArbreHuffman(struct noeud* arbre[256], uint32_t taille);
+void triArbre(struct noeud* arbre[256], uint32_t taille);
 
 #endif // HUFFMAN_H
