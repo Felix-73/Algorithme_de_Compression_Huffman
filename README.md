@@ -30,7 +30,7 @@ Bienvenue dans l'algorithme de compression Huffman, implémenté sur un microcon
 - En-têtes standard C (`stdint.h`, `stdio.h`, `stdbool.h`).
 
 ## Auteur
-Félix
+Félix Gueydan
 
 ## Licence
 Ce programme est distribué sous la licence [Licence X]. Consultez le fichier LICENCE pour plus de détails.

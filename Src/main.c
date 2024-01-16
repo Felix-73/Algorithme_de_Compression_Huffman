@@ -9,6 +9,8 @@
 #include "huffman.h"
 #include <stdbool.h>
 
+// GitHub: https://github.com/FelixGueyd/Gueydan.git
+
 int main(void)
 {
 // -------------------------------- INITIALISATION --------------------------------------------------
