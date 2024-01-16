@@ -32,5 +32,3 @@ Bienvenue dans l'algorithme de compression Huffman, implémenté sur un microcon
 ## Auteur
 Félix Gueydan
 
-## Licence
-Ce programme est distribué sous la licence [Licence X]. Consultez le fichier LICENCE pour plus de détails.
