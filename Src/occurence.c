@@ -13,3 +13,15 @@ void occurence(uint8_t* chaine, uint32_t tab[256]) {
     }
 }
 
+void afficherTableau(const int tableau[], int taille) {
+    printf("[");
+    for (int i = 0; i < taille; i++) {
+        printf("%d", tableau[i]);
+
+        // Ajouter une virgule après chaque élément, sauf le dernier
+        if (i < taille - 1) {
+            printf(", ");
+        }
+    }
+    printf("]\n");
+}

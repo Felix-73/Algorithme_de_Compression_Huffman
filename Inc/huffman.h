@@ -20,5 +20,7 @@ struct noeud {
 void creerFeuille(struct noeud* arbre[256], uint32_t tab[256],_Bool debug);
 void afficherTabArbreHuffman(struct noeud* arbre[256], uint32_t taille);
 void triArbre(struct noeud* arbre[256], uint32_t taille);
+struct noeud* construireArbreHuffman(struct noeud* arbre[256], int n);
+void afficherArbreHuffman(struct noeud* racine);
 
 #endif // HUFFMAN_H

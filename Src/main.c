@@ -1,3 +1,9 @@
+/**
+ * @file main.c
+ * @brief Main program file for Huffman Compression Algorithm on STM32F446 microcontroller.
+ * @author Félix
+ */
+
 #include <stdint.h>
 #include <stm32f446xx.h>
 #include <stdio.h>
@@ -9,41 +15,75 @@
 #include "huffman.h"
 #include <stdbool.h>
 
-
+/**
+ * @brief Main function
+ * @return 0 upon successful execution
+ */
 int main(void)
 {
-	GPIO_Init();
-	USART2_Init();
-	SYSTICK_Init();
-	printf("*******************************************\r\n");
-	printf("Bienvenue dans l'algorithme de compression\r\n");
-	printf("*******************************************\r\n\n");
-	uint32_t tabCaractere[256];
-	uint8_t texte[] = "aaaeiii";
+    // Initialize GPIO, USART, and SysTick
+    GPIO_Init();
+    USART2_Init();
+    SYSTICK_Init();
+
+    // Display welcome message
+    printf("\n\n\n*******************************************\r\n");
+    printf("Bienvenue dans l'algorithme de compression\r\n");
+    printf("*******************************************\r\n\n");
+
+    // Initialize variables
+    uint32_t tabCaractere[256];
+    uint8_t texte[] = "aaaabccc";
+    int caracterePresent[256] = {0};
+    int nbCaracteresDifferents = 0;
+
+    // display the original text
+    printf("Contenu du texte : ");
+    for (int i = 0; texte[i] != '\0'; i++) {
+        printf("%c", texte[i]);
+    }
+    printf("\r\n");
+
+    for (int i = 0; texte[i] != '\0'; i++) {
+        if (caracterePresent[texte[i]] == 0) {
+            caracterePresent[texte[i]] = 1;
+            nbCaracteresDifferents++;
+        }
+    }
+
+    printf("votre chaine de caractères à %d caractères differents\r\n\n", nbCaracteresDifferents);
 
 
-	// Calcul des occurences
-	occurence(texte, tabCaractere);
+    // Calculate character occurrences
+    occurence(texte, tabCaractere);
 
 
-	// Tableau d'arbre de Huffman
-	struct noeud* arbreHuffman[256];
+    // Array of Huffman tree nodes
+    struct noeud* arbreHuffman[256];
 
-	// Création des feuilles de l'arbre
-	creerFeuille(arbreHuffman, tabCaractere, true);
+    // Create leaves of the Huffman tree
+    creerFeuille(arbreHuffman, tabCaractere, true);
 
-    // Afficher les informations des 3 premières cases du tableau
-	printf("Avant le tri :\n");
-	afficherTabArbreHuffman(arbreHuffman, 3);
+    // Display information for the first three elements of the array
+    printf("				~~~~ Avant le tri ~~~~\r\n");
+    afficherTabArbreHuffman(arbreHuffman, nbCaracteresDifferents);
 
-	triArbre(arbreHuffman, 3);
+    // Sort the array
+    triArbre(arbreHuffman, 3);
 
-	printf("\nAprès le tri :\n");
-	afficherTabArbreHuffman(arbreHuffman, 3);
+    // Display information after sorting
+    printf("\n				~~~~ Après le tri ~~~~ \r\n");
+    afficherTabArbreHuffman(arbreHuffman, nbCaracteresDifferents);
 
-	// Libérer la mémoire allouée pour les feuilles de l'arbre
-	for (int i = 0; i < 256; i++) {
-		free(arbreHuffman[i]);
-	}
-	return 0;
+    struct noeud* racineArbreHuffman = construireArbreHuffman(arbreHuffman, 3);
+
+    printf("----- Arbre de Huffman -----\r\n");
+    afficherArbreHuffman(racineArbreHuffman);
+
+    // Free memory allocated for the leaves of the tree
+    for (int i = 0; i < 256; i++) {
+        free(arbreHuffman[i]);
+    }
+
+    return 0;
 }

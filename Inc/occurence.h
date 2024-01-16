@@ -9,7 +9,7 @@
 #define INC_OCCURENCE_H_
 
 // Déclaration de la fonction occurence
-void occurence(uint8_t* chaine, uint32_t tab[256]);
+occurence(uint8_t* chaine, uint32_t tab[256]);
 
 
 #endif /* INC_OCCURENCE_H_ */
