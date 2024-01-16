@@ -66,7 +66,7 @@ int main(void)
 //    printf("----- Arbre de Huffman -----\r\n");
 //    afficherArbreHuffman(racineArbreHuffman);								//	Fonction de DEBUG
 
-    printf("\n -------------------- Parcourir l'arbre de Huffman--------------------\r\n\n");
+    printf("\n -------------------- Parcourir l'arbre de Huffman --------------------\r\n\n");
     parcourirArbre(racineArbreHuffman);    // Appeler la fonction pour parcourir l'arbre
     libererArbre(racineArbreHuffman);    // Libérer l'espace utilisé pour l'arbre
 
