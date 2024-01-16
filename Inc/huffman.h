@@ -1,5 +1,9 @@
-// huffman.h
-
+/*
+ * huffman.h
+ *
+ *  Created on: Jan 15, 2024
+ *      Author: Felix
+ */
 #ifndef HUFFMAN_H
 #define HUFFMAN_H
 
@@ -16,11 +20,14 @@ struct noeud {
     struct noeud *gauche, *droite; // Lien vers les nœuds suivants
 };
 
-// Fonction pour créer une feuille de l'arbre de Huffman
+// Fonctions
 void creerFeuille(struct noeud* arbre[256], uint32_t tab[256],_Bool debug);
 void afficherTabArbreHuffman(struct noeud* arbre[256], uint32_t taille);
 void triArbre(struct noeud* arbre[256], uint32_t taille);
 struct noeud* construireArbreHuffman(struct noeud* arbre[256], int n);
 void afficherArbreHuffman(struct noeud* racine);
-
+void parcourirArbre(struct noeud* ptrNoeud);
+void libererArbre(struct noeud* ptrNoeud);
+void printBinary(uint32_t num, int size);
+void creerCode(struct noeud* ptrNoeud, uint32_t code, uint32_t taille);
 #endif // HUFFMAN_H
